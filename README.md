@@ -8,7 +8,7 @@ interactive Streamlit web app deployed on Streamlit Community Cloud.
 The task here is to recognise a handwritten digit (0–9) from an 8×8 grayscale pixel image.
 
 ## b. Dataset description
-- **Source:** UCI Machine Learning Repository – *Optical Recognition of Handwritten Digits* (loaded through `sklearn.datasets.load_digits`).
+- **Source:** UCI Machine Learning Repository – *Optical Recognition of Handwritten Digits* (loaded through `sklearn.datasets.load_digits`, which ships the 1797-image test portion of the full 5620-image UCI dataset).
 - **Type:** Multi-class classification (10 classes: digits 0–9).
 - **Instances:** 1797
 - **Features:** 64 numeric pixel-intensity features (`pixel_0_0` … `pixel_7_7`, values 0–16)
@@ -17,11 +17,11 @@ The task here is to recognise a handwritten digit (0–9) from an 8×8 grayscale
 - **Metric averaging:** Precision / Recall / F1 use *macro* averaging; AUC uses one-vs-rest macro averaging.
 
 ## c. GitHub repository link
-`https://github.com/harshitsharmahts/2026AJ05151-MachineLearning-Assignment2`
+[https://github.com/harshitsharmahts/2026AJ05151-MachineLearning-Assignment2](https://github.com/harshitsharmahts/2026AJ05151-MachineLearning-Assignment2)
 
 Repository layout:
 ```
-MLAssignment/
+2026AJ05151-MachineLearning-Assignment2/
 ├── app.py                 # Streamlit app
 ├── train_models.py        # training + evaluation script
 ├── requirements.txt
@@ -52,4 +52,14 @@ MLAssignment/
 | KNN | Very good (96.4 %); similar digits lie close together in pixel space. Slightly behind LR/SVM and slower at prediction time because it stores all training data. |
 | Naive Bayes | Moderate (86.7 %). The independence assumption is violated because neighbouring pixels are strongly correlated, but AUC (0.966) shows its probability ranking is still decent. |
 | Support Vector Machine | Best overall (98.0 % accuracy, MCC 0.978). The RBF kernel captures non-linear stroke patterns and gives the highest AUC. |
-| **Overall winner** | **Support Vector Machine (RBF)** – highest on every metric, with Logistic Regression a very close second. |
+| **Overall, Winner for your dataset?** | **Support Vector Machine (RBF)** – highest on every metric, with Logistic Regression a very close second. |
+
+## e. Streamlit app features
+**Live app:** [https://2026aj05151-machinelearning-assignment2.streamlit.app](https://2026aj05151-machinelearning-assignment2.streamlit.app)
+
+- CSV upload (use `test_data.csv`)
+- Model selection dropdown (5 models)
+- Evaluation metrics display (Accuracy, AUC, Precision, Recall, F1, MCC)
+- Confusion matrix and classification report
+- Optional side-by-side comparison of all models
+- Models are loaded from `model/`; **no retraining** happens in the app.
